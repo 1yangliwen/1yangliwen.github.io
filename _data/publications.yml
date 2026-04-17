@@ -1,0 +1,35 @@
+- title: "Paper Title One: A Concise and Clear Research Contribution"
+  authors: "Your Name, Coauthor A, Coauthor B"
+  venue: "Conference Name (Or Journal)"
+  year: 2026
+  summary: >
+    One or two sentences explaining the key problem, method, and result.
+  links:
+    - label: Paper
+      url: https://arxiv.org/
+    - label: Code
+      url: https://github.com/your-github-username/
+    - label: Slides
+      url: https://example.com/slides
+- title: "Paper Title Two: Another Example Publication"
+  authors: "Your Name, Coauthor C"
+  venue: "Journal Name"
+  year: 2025
+  summary: >
+    Use this space for a short abstract-like summary that is easy for visitors
+    outside your subfield to understand.
+  links:
+    - label: Paper
+      url: https://arxiv.org/
+    - label: Poster
+      url: https://example.com/poster
+- title: "Paper Title Three: Method, Dataset, or System Work"
+  authors: "Your Name, Coauthor D, Coauthor E"
+  venue: "Workshop / Preprint"
+  year: 2024
+  summary: >
+    Include enough detail to make the contribution legible without overwhelming
+    the page.
+  links:
+    - label: Paper
+      url: https://arxiv.org/

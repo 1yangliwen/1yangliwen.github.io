@@ -1,0 +1,56 @@
+name: Your Name
+title: Assistant Professor / PhD Candidate
+affiliation: School of Computer Science, Your University
+location: Shanghai, China
+email: your.email@example.com
+avatar: ""
+tagline: Building reliable AI systems for human-centered applications.
+bio: >
+  I study machine learning systems, multimodal understanding, and practical
+  AI tools that make research and product work more effective. My recent work
+  focuses on evaluation, trustworthy deployment, and the intersection of data
+  and human decision-making.
+interests:
+  - Large language models
+  - Multimodal learning
+  - Human-AI interaction
+  - AI for healthcare
+links:
+  - label: Google Scholar
+    url: https://scholar.google.com/
+  - label: GitHub
+    url: https://github.com/your-github-username
+  - label: CV
+    url: /assets/docs/cv.pdf
+  - label: Email
+    url: mailto:your.email@example.com
+news:
+  - date: 2026-04
+    text: Replace this with your latest paper, award, talk, or project update.
+  - date: 2026-02
+    text: Add a short milestone here so visitors can quickly see what is new.
+education:
+  - degree: PhD in Computer Science
+    institution: Your University
+    period: 2022 - Present
+    detail: Advised by Prof. Example Name.
+  - degree: BEng in Software Engineering
+    institution: Another University
+    period: 2018 - 2022
+    detail: Graduated with honors.
+experience:
+  - role: Research Intern
+    organization: Example Lab
+    period: Summer 2025
+    detail: Worked on efficient evaluation pipelines for large-scale models.
+  - role: Teaching Assistant
+    organization: Your University
+    period: 2023 - 2025
+    detail: Assisted with machine learning and data systems courses.
+projects:
+  - name: Project Alpha
+    summary: A short one-line description of your most representative project.
+    url: https://github.com/your-github-username/project-alpha
+  - name: Project Beta
+    summary: Another project, demo, dataset, or open-source contribution.
+    url: https://github.com/your-github-username/project-beta
