@@ -1,8 +1,8 @@
-title: Your Name
-email: your.email@example.com
-description: Personal academic website powered by GitHub Pages.
+title: Liwen Yang
+email: liwenyang@whu.edu.cn
+description: Liwen Yang's academic homepage.
 baseurl: ""
-url: "https://your-github-username.github.io"
+url: "https://1yangliwen.github.io"
 timezone: Asia/Shanghai
 lang: en
 markdown: kramdown

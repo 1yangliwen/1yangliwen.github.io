@@ -142,6 +142,7 @@ img {
 }
 
 .hero-meta,
+.hero-submeta,
 .hero-tagline,
 .authors,
 .muted,
@@ -153,6 +154,10 @@ img {
 .hero-tagline {
   font-size: 1.15rem;
   max-width: 42rem;
+}
+
+.hero-submeta {
+  margin-top: -0.2rem;
 }
 
 .button-row,
@@ -298,6 +303,36 @@ img {
 .project-card h3 {
   margin: 0 0 0.4rem;
   font-size: 1.28rem;
+}
+
+.publication-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.publication-image-wrap {
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #f5efe4;
+}
+
+.publication-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.publication-copy {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.publication-description > :first-child,
+.publication-description > :last-child {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .project-card {

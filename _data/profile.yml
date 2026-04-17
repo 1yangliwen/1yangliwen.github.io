@@ -1,56 +1,49 @@
-name: Your Name
-title: Assistant Professor / PhD Candidate
-affiliation: School of Computer Science, Your University
-location: Shanghai, China
-email: your.email@example.com
+name: Liwen Yang (杨力闻)
+title: Master Student at Wuhan University | Research Intern at Meituan
+institution: Wuhan University (WHU)
+affiliation: School of Computer Science, Wuhan University
+address: School of Computer Science, Wuhan University
+location: Wuhan, China
+advisor: Prof. Yongchao Xu
+email: liwenyang@whu.edu.cn
 avatar: ""
-tagline: Building reliable AI systems for human-centered applications.
+tagline: Computer Vision, 3D Reconstruction, Local Feature Matching, and Autonomous Driving.
 bio: >
-  I study machine learning systems, multimodal understanding, and practical
-  AI tools that make research and product work more effective. My recent work
-  focuses on evaluation, trustworthy deployment, and the intersection of data
-  and human decision-making.
+  I am a graduate student at the School of Computer Science, Wuhan University,
+  advised by Prof. Yongchao Xu. Currently, I am a research intern at the
+  Autonomous Driving Department of Meituan, focusing on dynamic 3D
+  reconstruction. My research interests mainly lie in computer vision,
+  specifically in local feature matching and 3D reconstruction.
 interests:
-  - Large language models
-  - Multimodal learning
-  - Human-AI interaction
-  - AI for healthcare
+  - Computer Vision
+  - 3D Reconstruction
+  - Local Feature Matching
+  - Autonomous Driving
 links:
-  - label: Google Scholar
-    url: https://scholar.google.com/
   - label: GitHub
-    url: https://github.com/your-github-username
-  - label: CV
-    url: /assets/docs/cv.pdf
+    url: https://github.com/1yangliwen
   - label: Email
-    url: mailto:your.email@example.com
+    url: mailto:liwenyang@whu.edu.cn
 news:
   - date: 2026-04
-    text: Replace this with your latest paper, award, talk, or project update.
+    text: Research Intern at Meituan Autonomous Driving, focusing on dynamic 3D reconstruction.
   - date: 2026-02
-    text: Add a short milestone here so visitors can quickly see what is new.
+    text: "Paper accepted to CVPR 2026 with Oral Presentation: From Pairs to Sequences."
 education:
-  - degree: PhD in Computer Science
-    institution: Your University
-    period: 2022 - Present
-    detail: Advised by Prof. Example Name.
-  - degree: BEng in Software Engineering
-    institution: Another University
-    period: 2018 - 2022
-    detail: Graduated with honors.
+  - degree: M.S. in Computer Science
+    institution: Wuhan University
+    period: 2025 - Present
+    detail: Graduate student at the School of Computer Science.
+  - degree: B.S. in Computer Science
+    institution: Wuhan University
+    period: 2021 - 2025
+    detail: Undergraduate studies in computer science.
 experience:
   - role: Research Intern
-    organization: Example Lab
-    period: Summer 2025
-    detail: Worked on efficient evaluation pipelines for large-scale models.
-  - role: Teaching Assistant
-    organization: Your University
-    period: 2023 - 2025
-    detail: Assisted with machine learning and data systems courses.
-projects:
-  - name: Project Alpha
-    summary: A short one-line description of your most representative project.
-    url: https://github.com/your-github-username/project-alpha
-  - name: Project Beta
-    summary: Another project, demo, dataset, or open-source contribution.
-    url: https://github.com/your-github-username/project-beta
+    organization: Meituan Autonomous Driving
+    period: 2026.04 - Present
+    detail: Conducting research on dynamic 3D reconstruction for autonomous driving.
+honors:
+  - title: CVPR 2026 Oral Presentation
+    year: 2026
+projects: []

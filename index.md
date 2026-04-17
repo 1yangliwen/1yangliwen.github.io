@@ -8,8 +8,9 @@ title: Home
   <div class="hero-copy">
     <p class="eyebrow">{{ profile.title }}</p>
     <h1>{{ profile.name }}</h1>
-    <p class="hero-meta">{{ profile.affiliation }} · {{ profile.location }}</p>
+    <p class="hero-meta">{{ profile.institution }} · {{ profile.location }}</p>
     <p class="hero-tagline">{{ profile.tagline }}</p>
+    <p class="hero-submeta">{{ profile.address }}</p>
     <div class="button-row">
       {% for link in profile.links limit:3 %}
         {% assign href = link.url %}
@@ -38,6 +39,11 @@ title: Home
   <div class="section-grid">
     <div class="card">
       <p>{{ profile.bio }}</p>
+    </div>
+    <div class="card">
+      <h3>Affiliation</h3>
+      <p>{{ profile.affiliation }}</p>
+      <p class="muted">Advised by {{ profile.advisor }}</p>
     </div>
     <div class="card">
       <h3>Interests</h3>
@@ -73,22 +79,33 @@ title: Home
   <div class="stack">
     {% for paper in site.data.publications %}
       <article class="publication-card">
-        <div class="publication-topline">
-          <span>{{ paper.year }}</span>
-          <span>{{ paper.venue }}</span>
-        </div>
-        <h3>{{ paper.title }}</h3>
-        <p class="authors">{{ paper.authors }}</p>
-        <p>{{ paper.summary }}</p>
-        <div class="link-row">
-          {% for link in paper.links %}
-            {% assign href = link.url %}
-            {% if href contains '://' or href contains 'mailto:' %}
-              <a href="{{ href }}">{{ link.label }}</a>
-            {% else %}
-              <a href="{{ href | relative_url }}">{{ link.label }}</a>
-            {% endif %}
-          {% endfor %}
+        <div class="publication-layout">
+          {% if paper.image and paper.image != "" %}
+            <div class="publication-image-wrap">
+              <img class="publication-image" src="{{ paper.image | relative_url }}" alt="{{ paper.title }}">
+            </div>
+          {% endif %}
+          <div class="publication-copy">
+            <div class="publication-topline">
+              <span>{{ paper.year }}</span>
+              <span>{{ paper.venue }}</span>
+            </div>
+            <h3>{{ paper.title }}</h3>
+            <p class="authors">{{ paper.authors }}</p>
+            {% assign paper_text = paper.description | default: paper.summary %}
+            <div class="publication-description">{{ paper_text | markdownify }}</div>
+            <div class="link-row">
+              {% for link in paper.links %}
+                {% assign href = link.url %}
+                {% assign link_text = link.label | default: link.name %}
+                {% if href contains '://' or href contains 'mailto:' %}
+                  <a href="{{ href }}">{{ link_text }}</a>
+                {% else %}
+                  <a href="{{ href | relative_url }}">{{ link_text }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
         </div>
       </article>
     {% endfor %}
@@ -134,26 +151,45 @@ title: Home
   </div>
 </section>
 
-<section class="content-section">
-  <div class="section-heading">
-    <p>Build</p>
-    <h2>Projects</h2>
-  </div>
-  <div class="section-grid">
-    {% for project in profile.projects %}
-      <article class="card project-card">
-        <h3>{{ project.name }}</h3>
-        <p>{{ project.summary }}</p>
-        {% assign href = project.url %}
-        {% if href contains '://' or href contains 'mailto:' %}
-          <a href="{{ href }}">View project</a>
-        {% else %}
-          <a href="{{ href | relative_url }}">View project</a>
-        {% endif %}
-      </article>
-    {% endfor %}
-  </div>
-</section>
+{% if profile.honors and profile.honors.size > 0 %}
+  <section class="content-section">
+    <div class="section-heading">
+      <p>Recognition</p>
+      <h2>Honors</h2>
+    </div>
+    <div class="section-grid">
+      {% for honor in profile.honors %}
+        <article class="card project-card">
+          <h3>{{ honor.title }}</h3>
+          <p>{{ honor.year }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% if profile.projects and profile.projects.size > 0 %}
+  <section class="content-section">
+    <div class="section-heading">
+      <p>Build</p>
+      <h2>Projects</h2>
+    </div>
+    <div class="section-grid">
+      {% for project in profile.projects %}
+        <article class="card project-card">
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.summary }}</p>
+          {% assign href = project.url %}
+          {% if href contains '://' or href contains 'mailto:' %}
+            <a href="{{ href }}">View project</a>
+          {% else %}
+            <a href="{{ href | relative_url }}">View project</a>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
 
 <section id="contact" class="content-section contact-card">
   <div>
