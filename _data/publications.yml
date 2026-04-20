@@ -1,11 +1,20 @@
 - title: "From Pairs to Sequences: Track-Aware Policy Gradients for Keypoint Detection"
   authors: "Yepeng Liu*, Hao Li*, <b>Liwen Yang*</b>, Fangzhen Li†, Xudi Ge, Yuliang Gu, Kuang Gao, Bing Wang, Guang Chen, Hangjun Ye, Yongchao Xu†"
-  venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+  venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition"
+  venue_short: "CVPR 2026"
   year: 2026
-  description: >
-    **Oral Presentation**  
-    *Equal contribution. Work done in collaboration with Xiaomi EV.*
-
+  badges:
+    - text: Oral Presentation
+      tone: highlight
+    - text: Equal contribution
+      tone: neutral
+    - text: Work done with Xiaomi EV
+      tone: neutral
+  tldr: >
+    Proposed TraqPoint, a reinforcement learning framework that reformulates
+    keypoint detection as a sequential decision-making problem, significantly
+    improving long-term tracking.
+  abstract: >
     Existing keypoint methods are largely trained on image pairs and optimized
     for short-term matching, while overlooking long-term trackability in image
     sequences. This often causes keypoint drift and loss under long tracks and

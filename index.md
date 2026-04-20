@@ -87,23 +87,38 @@ title: Home
           {% endif %}
           <div class="publication-copy">
             <div class="publication-topline">
-              <span class="publication-year">{{ paper.year }}</span>
+              <strong class="publication-kicker">{{ paper.venue_short | default: paper.year }}</strong>
               <span class="publication-venue">{{ paper.venue }}</span>
             </div>
             <h3>{{ paper.title }}</h3>
             <p class="authors">{{ paper.authors }}</p>
-            {% assign paper_text = paper.description | default: paper.summary %}
-            <div class="publication-description">{{ paper_text | markdownify }}</div>
-            {% assign valid_links = paper.links | where_exp: "link", "link.url != '#'" %}
-            {% if valid_links.size > 0 %}
-              <div class="link-row">
-                {% for link in valid_links %}
+            {% if paper.badges and paper.badges.size > 0 %}
+              <div class="badge-row">
+                {% for badge in paper.badges %}
+                  <span class="badge badge-{{ badge.tone | default: 'neutral' }}">{{ badge.text }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if paper.tldr %}
+              <p class="publication-tldr">{{ paper.tldr }}</p>
+            {% endif %}
+            {% if paper.abstract %}
+              <details class="abstract-toggle">
+                <summary>Toggle Abstract</summary>
+                <div class="publication-abstract">{{ paper.abstract | markdownify }}</div>
+              </details>
+            {% endif %}
+            {% if paper.links and paper.links.size > 0 %}
+              <div class="action-row">
+                {% for link in paper.links %}
                   {% assign href = link.url %}
                   {% assign link_text = link.label | default: link.name %}
-                  {% if href contains '://' or href contains 'mailto:' %}
-                    <a href="{{ href }}">{{ link_text }}</a>
+                  {% if href == "#" %}
+                    <span class="action-button is-disabled">{{ link_text }}</span>
+                  {% elsif href contains '://' or href contains 'mailto:' %}
+                    <a class="action-button" href="{{ href }}">{{ link_text }}</a>
                   {% else %}
-                    <a href="{{ href | relative_url }}">{{ link_text }}</a>
+                    <a class="action-button" href="{{ href | relative_url }}">{{ link_text }}</a>
                   {% endif %}
                 {% endfor %}
               </div>
