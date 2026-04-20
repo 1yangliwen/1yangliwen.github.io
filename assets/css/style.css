@@ -306,21 +306,24 @@ img {
 }
 
 .publication-card {
-  padding: 2rem;
-  border-radius: 24px;
+  padding: 2.4rem 2rem 2.1rem;
+  border-radius: 28px;
   background: rgba(255, 253, 249, 0.9);
 }
 
 .publication-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.9rem;
+  align-items: start;
+  justify-items: center;
 }
 
 .publication-image-wrap {
   overflow: hidden;
-  align-self: start;
-  padding: 0.85rem;
+  width: min(100%, 960px);
+  margin-inline: auto;
+  padding: 1rem;
   border-radius: 20px;
   border: 1px solid var(--line);
   background: linear-gradient(180deg, #fffdf9 0%, #f6efe3 100%);
@@ -329,7 +332,6 @@ img {
 
 .publication-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
   height: auto;
   object-fit: contain;
   border-radius: 12px;
@@ -338,39 +340,48 @@ img {
 
 .publication-copy {
   display: grid;
-  gap: 1rem;
+  width: 100%;
+  gap: 1.05rem;
   align-content: start;
+  justify-items: center;
+  text-align: center;
+}
+
+.publication-topline {
+  justify-content: center;
+  margin-bottom: 0.1rem;
 }
 
 .publication-kicker {
   display: inline-flex;
   align-items: center;
-  padding: 0.38rem 0.78rem;
+  padding: 0.42rem 0.86rem;
   border-radius: var(--radius-sm);
   background: rgba(15, 118, 110, 0.1);
   color: var(--accent-strong);
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   letter-spacing: 0.03em;
 }
 
 .publication-venue {
+  max-width: 54rem;
   color: #41545b;
-  font-size: 0.98rem;
-  line-height: 1.55;
+  font-size: 1rem;
+  line-height: 1.62;
 }
 
 .publication-card h3 {
   margin: 0;
-  max-width: 20ch;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  line-height: 1.18;
+  max-width: 24ch;
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
+  line-height: 1.2;
 }
 
 .authors {
-  max-width: 52rem;
-  font-size: 1rem;
-  line-height: 1.6;
+  max-width: 58rem;
+  font-size: 1.04rem;
+  line-height: 1.72;
 }
 
 .badge-row,
@@ -378,42 +389,46 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+  justify-content: center;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.42rem 0.78rem;
+  padding: 0.48rem 0.88rem;
   border-radius: var(--radius-sm);
   background: rgba(15, 118, 110, 0.08);
   border: 1px solid rgba(15, 118, 110, 0.12);
   color: #1d4e52;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.2;
 }
 
 .badge-highlight {
-  background: rgba(145, 24, 31, 0.12);
-  border-color: rgba(145, 24, 31, 0.18);
-  color: #8f1820;
+  background: linear-gradient(180deg, #c62839 0%, #911821 100%);
+  border-color: rgba(145, 24, 31, 0.36);
+  color: #fff8f7;
+  box-shadow: 0 10px 24px rgba(145, 24, 31, 0.22);
 }
 
 .publication-tldr {
-  max-width: 60ch;
+  max-width: 64ch;
   margin: 0;
   color: #223038;
-  font-size: 1.07rem;
-  line-height: 1.82;
+  font-size: 1.08rem;
+  line-height: 1.9;
 }
 
 .abstract-toggle {
-  max-width: 66ch;
+  width: 100%;
+  max-width: 70ch;
 }
 
 .abstract-toggle summary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 0.45rem 0.82rem;
   border: 1px solid rgba(24, 33, 38, 0.12);
   border-radius: var(--radius-sm);
@@ -435,9 +450,11 @@ img {
 
 .publication-abstract {
   max-width: 66ch;
+  margin: 0 auto;
   color: #223038;
   font-size: 1.01rem;
   line-height: 1.85;
+  text-align: left;
 }
 
 .publication-abstract > * {
@@ -453,14 +470,15 @@ img {
 }
 
 .action-row {
-  margin-top: 0.15rem;
+  margin-top: 0.4rem;
 }
 
 .action-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.62rem 1rem;
+  min-width: 8.75rem;
+  padding: 0.72rem 1.15rem;
   border: 1px solid rgba(15, 118, 110, 0.2);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.86);
@@ -477,15 +495,8 @@ img {
 }
 
 .action-button.is-disabled {
-  opacity: 0.56;
+  opacity: 0.72;
   cursor: default;
-}
-
-@media (min-width: 900px) {
-  .publication-layout {
-    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
-    align-items: start;
-  }
 }
 
 .project-card {
@@ -532,12 +543,22 @@ img {
   }
 
   .publication-card {
-    padding: 1.2rem;
+    padding: 1.25rem;
   }
 
   .publication-card h3 {
     max-width: none;
-    font-size: 1.75rem;
+    font-size: 1.85rem;
+  }
+
+  .publication-image-wrap {
+    width: 100%;
+    padding: 0.7rem;
+  }
+
+  .action-button {
+    min-width: 0;
+    width: 100%;
   }
 }
 
