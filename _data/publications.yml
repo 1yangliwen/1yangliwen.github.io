@@ -23,7 +23,7 @@
     TraqPoint achieves strong gains on pose estimation, visual odometry, and
     3D reconstruction, substantially improving keypoint stability and overall
     3D vision system performance.
-  image: ""
+  image: "/assets/img/traqpoint_teaser.png"
   links:
     - name: Project Page
       url: "#"
