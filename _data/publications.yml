@@ -2,7 +2,27 @@
   authors: "Yepeng Liu*, Hao Li*, <b>Liwen Yang*</b>, Fangzhen Li†, Xudi Ge, Yuliang Gu, Kuang Gao, Bing Wang, Guang Chen, Hangjun Ye, Yongchao Xu†"
   venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
   year: 2026
-  description: "**Oral Presentation** <br> (* Equal contribution) Work done in collaboration with Xiaomi EV."
+  description: >
+    **Oral Presentation**  
+    *Equal contribution. Work done in collaboration with Xiaomi EV.*
+
+    Existing keypoint methods are largely trained on image pairs and optimized
+    for short-term matching, while overlooking long-term trackability in image
+    sequences. This often causes keypoint drift and loss under long tracks and
+    large viewpoint or illumination changes, limiting downstream 3D vision
+    systems such as SfM and SLAM.
+
+    We present **TraqPoint**, a track-aware end-to-end policy-gradient
+    reinforcement learning framework that reformulates keypoint detection as a
+    sequential decision-making problem. TraqPoint adopts a two-stage
+    "describe-then-detect" training strategy, introduces a trajectory reward
+    that combines ranking and distinctiveness, and employs hybrid global-grid
+    sampling to balance saliency and coverage for long-term tracking.
+
+    By shifting the objective from pairwise matching to long-term tracking,
+    TraqPoint achieves strong gains on pose estimation, visual odometry, and
+    3D reconstruction, substantially improving keypoint stability and overall
+    3D vision system performance.
   image: ""
   links:
     - name: Project Page
