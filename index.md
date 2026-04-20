@@ -87,24 +87,27 @@ title: Home
           {% endif %}
           <div class="publication-copy">
             <div class="publication-topline">
-              <span>{{ paper.year }}</span>
-              <span>{{ paper.venue }}</span>
+              <span class="publication-year">{{ paper.year }}</span>
+              <span class="publication-venue">{{ paper.venue }}</span>
             </div>
             <h3>{{ paper.title }}</h3>
             <p class="authors">{{ paper.authors }}</p>
             {% assign paper_text = paper.description | default: paper.summary %}
             <div class="publication-description">{{ paper_text | markdownify }}</div>
-            <div class="link-row">
-              {% for link in paper.links %}
-                {% assign href = link.url %}
-                {% assign link_text = link.label | default: link.name %}
-                {% if href contains '://' or href contains 'mailto:' %}
-                  <a href="{{ href }}">{{ link_text }}</a>
-                {% else %}
-                  <a href="{{ href | relative_url }}">{{ link_text }}</a>
-                {% endif %}
-              {% endfor %}
-            </div>
+            {% assign valid_links = paper.links | where_exp: "link", "link.url != '#'" %}
+            {% if valid_links.size > 0 %}
+              <div class="link-row">
+                {% for link in valid_links %}
+                  {% assign href = link.url %}
+                  {% assign link_text = link.label | default: link.name %}
+                  {% if href contains '://' or href contains 'mailto:' %}
+                    <a href="{{ href }}">{{ link_text }}</a>
+                  {% else %}
+                    <a href="{{ href | relative_url }}">{{ link_text }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
           </div>
         </div>
       </article>
