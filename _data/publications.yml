@@ -35,11 +35,11 @@
   image: "/assets/img/traqpoint_teaser.png"
   links:
     - name: Project Page
-      url: "#"
+      url: "https://1yangliwen.github.io/traqpoint.github.io/"
     - name: Paper
-      url: "#"
+      url: "https://openaccess.thecvf.com/content/CVPR2026/papers/Liu_From_Pairs_to_Sequences_Track-Aware_Policy_Gradients_for_Keypoint_Detection_CVPR_2026_paper.pdf"
     - name: Code
-      url: "#"
+      url: "https://github.com/xiaomi-research/traqpoint"
 
 - title: "Large Model Based Crossmodal Chinese Poetry Creation"
   authors: "<b>Liwen Yang</b>, Zhidong Zhang, Kaipeng Niu, Sitian Pan, Weiping Zhu, Chao Ma"

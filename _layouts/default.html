@@ -11,6 +11,14 @@
       {% endif %}
     </title>
     <meta name="description" content="{{ site.description }}">
+    <meta name="theme-color" content="#0f766e">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% if page.title and page.title != "Home" %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ '/assets/images/profile-photo.jpg' | absolute_url }}">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='43' font-family='Georgia, serif' font-size='34' font-weight='700' fill='%23fffdf9' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
   <body>
@@ -30,8 +38,42 @@
       </main>
 
       <footer class="site-footer">
-        <p>{{ site.title }} · Powered by GitHub Pages</p>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }} · Powered by GitHub Pages</p>
       </footer>
     </div>
+    <script>
+      (function () {
+        var header = document.querySelector('.site-header');
+        var onScroll = function () {
+          header.classList.toggle('is-scrolled', window.scrollY > 8);
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion && 'IntersectionObserver' in window) {
+          var targets = document.querySelectorAll('.content-section');
+          var vh = window.innerHeight;
+          targets.forEach(function (el) {
+            el.classList.add('reveal');
+            var rect = el.getBoundingClientRect();
+            if (rect.top < vh * 0.95 && rect.bottom > 0) {
+              el.classList.add('is-visible');
+            }
+          });
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+          targets.forEach(function (el) {
+            if (!el.classList.contains('is-visible')) { io.observe(el); }
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

@@ -20,11 +20,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
 }
 
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 24rem),
@@ -35,6 +37,26 @@ body {
 
 a {
   color: inherit;
+}
+
+h1,
+h2,
+h3,
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+::selection {
+  background: rgba(15, 118, 110, 0.22);
+}
+
+a:focus-visible,
+.button:focus-visible,
+.action-button:focus-visible,
+.abstract-toggle summary:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 img {
@@ -62,6 +84,11 @@ img {
   border-radius: var(--radius-sm);
   background: rgba(249, 245, 239, 0.82);
   backdrop-filter: blur(14px);
+  transition: box-shadow 250ms ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 12px 32px rgba(18, 30, 33, 0.12);
 }
 
 .brand,
@@ -87,7 +114,31 @@ img {
 }
 
 .nav a {
+  position: relative;
   color: var(--muted);
+  transition: color 180ms ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
 }
 
 .hero,
@@ -183,6 +234,18 @@ img {
   background: var(--accent-strong);
 }
 
+.button-outline {
+  border: 1px solid rgba(15, 118, 110, 0.28);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--accent-strong);
+}
+
+.button-outline:hover {
+  border-color: rgba(15, 118, 110, 0.42);
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--accent-strong);
+}
+
 .hero-card {
   display: flex;
   align-items: center;
@@ -217,6 +280,17 @@ img {
   margin-bottom: 2rem;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 .section-heading {
   margin-bottom: 1rem;
 }
@@ -230,6 +304,14 @@ img {
   background: var(--panel);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card:hover,
+.publication-card:hover,
+.timeline-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 28px 64px rgba(18, 30, 33, 0.12);
 }
 
 .section-grid {
@@ -440,6 +522,19 @@ img {
   display: none;
 }
 
+.abstract-toggle summary::after {
+  content: "";
+  margin-left: 0.55rem;
+  border-left: 0.32rem solid transparent;
+  border-right: 0.32rem solid transparent;
+  border-top: 0.42rem solid currentColor;
+  transition: transform 200ms ease;
+}
+
+.abstract-toggle[open] summary::after {
+  transform: rotate(180deg);
+}
+
 .abstract-toggle[open] summary {
   margin-bottom: 0.9rem;
 }
@@ -492,8 +587,20 @@ img {
 }
 
 .action-button.is-disabled {
-  opacity: 0.72;
+  min-width: 0;
+  border-style: dashed;
+  border-color: var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 500;
   cursor: default;
+}
+
+.action-button.is-disabled::after {
+  content: "\00B7 coming soon";
+  margin-left: 0.35rem;
+  font-size: 0.8rem;
+  opacity: 0.75;
 }
 
 .project-card {
@@ -508,6 +615,11 @@ img {
 
 .contact-card {
   grid-template-columns: 1.4fr 1fr;
+}
+
+.contact-card h2 {
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  line-height: 1.4;
 }
 
 .site-footer {
@@ -564,7 +676,133 @@ img {
     scroll-behavior: auto;
   }
 
-  .button {
+  .button,
+  .nav a,
+  .nav a::after,
+  .action-button,
+  .abstract-toggle summary::after,
+  .card,
+  .publication-card,
+  .timeline-item,
+  .site-header {
     transition: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e8ecec;
+    --muted: #9aa6ac;
+    --line: rgba(232, 236, 236, 0.14);
+    --accent: #2dd4bf;
+    --accent-strong: #5eead4;
+    --panel: rgba(28, 34, 36, 0.72);
+    --panel-strong: #1c2224;
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(45, 212, 191, 0.1), transparent 24rem),
+      radial-gradient(circle at top right, rgba(191, 139, 77, 0.09), transparent 22rem),
+      linear-gradient(180deg, #14181a 0%, #101415 100%);
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background: rgba(45, 212, 191, 0.32);
+  }
+
+  .site-header {
+    background: rgba(20, 24, 26, 0.82);
+  }
+
+  .hero,
+  .contact-card {
+    border-color: var(--line);
+    background: linear-gradient(145deg, rgba(30, 36, 38, 0.92), rgba(24, 29, 31, 0.78));
+  }
+
+  .hero-card {
+    border-color: var(--line);
+    background:
+      linear-gradient(160deg, rgba(45, 212, 191, 0.12), rgba(191, 139, 77, 0.1)),
+      #1a2022;
+  }
+
+  .avatar-fallback {
+    background: rgba(45, 212, 191, 0.14);
+  }
+
+  .tag-list li {
+    background: rgba(45, 212, 191, 0.1);
+  }
+
+  .publication-card {
+    background: rgba(30, 36, 38, 0.9);
+  }
+
+  .publication-image-wrap {
+    background: linear-gradient(180deg, #fffdf9 0%, #f6efe3 100%);
+  }
+
+  .publication-venue {
+    color: #9fb0b7;
+  }
+
+  .publication-tldr,
+  .publication-abstract {
+    color: #d4dcde;
+  }
+
+  .publication-abstract strong {
+    color: #f2f6f6;
+  }
+
+  .badge {
+    color: #bfe3de;
+    border-color: rgba(45, 212, 191, 0.18);
+  }
+
+  .abstract-toggle summary {
+    border-color: var(--line);
+    background: rgba(255, 255, 255, 0.06);
+    color: #b9c5c9;
+  }
+
+  .action-button {
+    border-color: rgba(45, 212, 191, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .action-button:hover {
+    background: rgba(45, 212, 191, 0.12);
+    border-color: rgba(45, 212, 191, 0.42);
+  }
+
+  .button-outline {
+    border-color: rgba(45, 212, 191, 0.35);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .button-outline:hover {
+    border-color: rgba(45, 212, 191, 0.5);
+    background: rgba(45, 212, 191, 0.12);
+  }
+
+  .card:hover,
+  .publication-card:hover,
+  .timeline-item:hover {
+    box-shadow: 0 28px 64px rgba(0, 0, 0, 0.55);
+  }
+
+  .site-header.is-scrolled {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
   }
 }

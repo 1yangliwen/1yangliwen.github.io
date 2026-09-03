@@ -24,7 +24,7 @@ title: Home
   </div>
   <div class="hero-card">
     {% if profile.avatar and profile.avatar != "" %}
-      <img src="{{ profile.avatar | relative_url }}" alt="{{ profile.name }}">
+      <img src="{{ profile.avatar | relative_url }}" alt="{{ profile.name }}" width="1040" height="1300" fetchpriority="high" decoding="async">
     {% else %}
       <div class="avatar-fallback">{{ profile.name | slice: 0 }}</div>
     {% endif %}
@@ -82,7 +82,7 @@ title: Home
         <div class="publication-layout">
           {% if paper.image and paper.image != "" %}
             <div class="publication-image-wrap">
-              <img class="publication-image" src="{{ paper.image | relative_url }}" alt="{{ paper.title }}">
+              <img class="publication-image" src="{{ paper.image | relative_url }}" alt="{{ paper.title }}" loading="lazy" decoding="async">
             </div>
           {% endif %}
           <div class="publication-copy">
@@ -116,7 +116,7 @@ title: Home
                   {% if href == "#" %}
                     <span class="action-button is-disabled">{{ link_text }}</span>
                   {% elsif href contains '://' or href contains 'mailto:' %}
-                    <a class="action-button" href="{{ href }}">{{ link_text }}</a>
+                    <a class="action-button" href="{{ href }}" target="_blank" rel="noopener">{{ link_text }}</a>
                   {% else %}
                     <a class="action-button" href="{{ href | relative_url }}">{{ link_text }}</a>
                   {% endif %}
@@ -212,7 +212,7 @@ title: Home
 <section id="contact" class="content-section contact-card">
   <div>
     <p class="eyebrow">Contact</p>
-    <h2>Open to research collaboration, talks, and student mentoring.</h2>
+    <h2>Open to research collaboration and full-time opportunities in computer vision and robotics (Class of 2027).</h2>
   </div>
   <div class="contact-links">
     <a class="button" href="mailto:{{ profile.email }}">Email me</a>
@@ -220,9 +220,9 @@ title: Home
       {% unless link.label == "Email" %}
         {% assign href = link.url %}
         {% if href contains '://' or href contains 'mailto:' %}
-          <a href="{{ href }}">{{ link.label }}</a>
+          <a class="button button-outline" href="{{ href }}">{{ link.label }}</a>
         {% else %}
-          <a href="{{ href | relative_url }}">{{ link.label }}</a>
+          <a class="button button-outline" href="{{ href | relative_url }}">{{ link.label }}</a>
         {% endif %}
       {% endunless %}
     {% endfor %}
